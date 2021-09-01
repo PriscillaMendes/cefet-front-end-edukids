@@ -12,7 +12,7 @@
  * botões play/stop (para que o elemento se revele lentamente)
  */
  #controles ul {
-
+  transition: all 0.9s ease-out;
  }
 
 /*
@@ -24,17 +24,53 @@
  *   - atacando: animal dá um salto e cresce, com uma borda vermelha
  */
 .com-fome {
+  background-color: blue;
+  animation: faminto 0.5s ease-in-out 0s infinite alternate;
+}
 
+@keyframes faminto {
+  0%    { display: none; }
+  20%   { display: block; opacity: 0.3;}
+  40%   { display: none; opacity: 0.6;}
+  60%   { display: block; opacity: 0.9;}
 }
 
 .satisfeito {
+  background-color: green;
+  animation: alimentado 3s ease-in-out 0s infinite alternate;
+}
 
+@keyframes alimentado {
+  from   {  transform: rotateY(0); }
+  to  {  transform: rotateY(3600deg)}
 }
 
 .com-raiva {
+  position: relative;
+  animation: maisRaiva .5s ease-in-out 0s infinite alternate;
+}
+
+@keyframes maisRaiva {
+  0%    { top: 0;  transform: rotate(15deg);}
+  20%   { top: -20px; transform: rotate(-15deg);}
+  40%   { top: 0px; transform: rotate(-15deg);}
+  60%   { top: 20px; transform: rotate(15deg);}
+  75%   { top: 0px; transform: rotate(-15deg);}
+  80%   { top: 20px; transform: rotate(15deg);}
+  90%   { top: 0px; transform: rotate(-15deg);}
+  100%  { top: -20px; transform: rotate(15deg);}
 
 }
 
 .atacando {
+  position: relative;
+  background-color: red;
+  animation: ataqueFeroz .5s ease-in-out 0s infinite alternate;
+}
 
+@keyframes ataqueFeroz {
+  0%    { top: 0;  }
+  20%   { top: 20px;}
+  40%   { top: 0px;}
+  50%   {transform: scale(1.5);}
 }
